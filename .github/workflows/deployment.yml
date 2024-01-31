@@ -24,7 +24,7 @@ jobs:
       - name: Test code
         run: npm run test
   deploy:
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'development' }}
     steps:
