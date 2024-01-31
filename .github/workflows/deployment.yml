@@ -36,4 +36,4 @@ jobs:
         run: |
           curl "$deploy_url"
       - name: Display output
-        run: echo "Backend deployed sucessfully"
+        run: echo "Triggered backend deployment sucessfully"
