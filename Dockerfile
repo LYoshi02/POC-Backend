@@ -1,17 +1,18 @@
 ARG NODE_VERSION=20.11.0
 
+
 # Local dev environment
-FROM node:${NODE_VERSION}-bookworm-slim AS dev
+FROM node:${NODE_VERSION} AS dev
 
 WORKDIR /app
 
-COPY --chown=node:node package*.json ./
+COPY package*.json ./
 
 RUN npm pkg delete scripts.prepare && npm ci
 
-COPY --chown=node:node . .
+COPY . .
 
-USER node
+RUN npm run prisma:generate
 
 
 # Build for production
