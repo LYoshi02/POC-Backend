@@ -7,6 +7,7 @@ import {
   Post,
   Put
 } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 
 import { FindOneParams } from "../utils/findOneParams";
 import { NotesService } from "./notes.service";
@@ -14,6 +15,7 @@ import { UpdateNoteDto } from "./dto/updateNote.dto";
 import { CreateNoteDto } from "./dto/createNote.dto";
 
 @Controller("notes")
+@ApiTags("notes")
 export class NotesController {
   constructor(private readonly notesService: NotesService) {}
 
