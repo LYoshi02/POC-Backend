@@ -7,7 +7,7 @@ import {
   Post,
   Put
 } from "@nestjs/common";
-import { ApiTags } from "@nestjs/swagger";
+import { ApiParam, ApiTags } from "@nestjs/swagger";
 
 import { FindOneParams } from "../utils/findOneParams";
 import { NotesService } from "./notes.service";
@@ -25,6 +25,10 @@ export class NotesController {
   }
 
   @Get(":id")
+  @ApiParam({
+    name: "id",
+    required: true
+  })
   getNoteById(@Param() { id }: FindOneParams) {
     return this.notesService.getNoteById(Number(id));
   }
@@ -35,6 +39,10 @@ export class NotesController {
   }
 
   @Put(":id")
+  @ApiParam({
+    name: "id",
+    required: true
+  })
   async updateNote(
     @Param() { id }: FindOneParams,
     @Body() note: UpdateNoteDto
@@ -43,6 +51,10 @@ export class NotesController {
   }
 
   @Delete(":id")
+  @ApiParam({
+    name: "id",
+    required: true
+  })
   async deleteNote(@Param() { id }: FindOneParams) {
     return this.notesService.deleteNote(Number(id));
   }
