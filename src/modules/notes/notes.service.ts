@@ -1,8 +1,9 @@
 import { Injectable, Logger } from "@nestjs/common";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
-import { PrismaService } from "../prisma/prisma.service";
-import { PrismaError } from "../utils/prismaError";
+import { PrismaService } from "@/modules/prisma/prisma.service";
+import { PrismaError } from "@/utils/prismaError";
+
 import { CreateNoteDto } from "./dto/createNote.dto";
 import { UpdateNoteDto } from "./dto/updateNote.dto";
 import { NoteNotFoundException } from "./exceptions/noteNotFound.exception";

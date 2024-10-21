@@ -1,18 +1,11 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put
-} from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { ApiParam, ApiTags } from "@nestjs/swagger";
 
-import { FindOneParams } from "../utils/findOneParams";
-import { NotesService } from "./notes.service";
-import { UpdateNoteDto } from "./dto/updateNote.dto";
+import { FindOneParams } from "@/utils/findOneParams";
+
 import { CreateNoteDto } from "./dto/createNote.dto";
+import { UpdateNoteDto } from "./dto/updateNote.dto";
+import { NotesService } from "./notes.service";
 
 @Controller("notes")
 @ApiTags("notes")
@@ -43,10 +36,7 @@ export class NotesController {
     name: "id",
     required: true
   })
-  async updateNote(
-    @Param() { id }: FindOneParams,
-    @Body() note: UpdateNoteDto
-  ) {
+  async updateNote(@Param() { id }: FindOneParams, @Body() note: UpdateNoteDto) {
     return this.notesService.updateNote(Number(id), note);
   }
 
