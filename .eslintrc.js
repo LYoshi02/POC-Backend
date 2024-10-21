@@ -1,12 +1,26 @@
+const path = require("path");
+
 module.exports = {
+  settings: {
+    "import/resolver": {
+      typescript: {
+        project: path.resolve(__dirname, "tsconfig.json")
+      }
+    }
+  },
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: "tsconfig.json",
     tsconfigRootDir: __dirname,
     sourceType: "module"
   },
-  plugins: ["@typescript-eslint/eslint-plugin"],
-  extends: ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+  plugins: ["@typescript-eslint/eslint-plugin", "import"],
+  extends: [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
   root: true,
   env: {
     node: true,
@@ -30,6 +44,17 @@ module.exports = {
         bracketSpacing: true,
         bracketSameLine: false,
         endOfLine: "auto"
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        groups: [["builtin", "external"], "internal", "parent", ["sibling", "index"]],
+        "newlines-between": "always",
+        named: true,
+        alphabetize: {
+          order: "asc"
+        }
       }
     ]
   }
