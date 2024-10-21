@@ -1,7 +1,7 @@
 import { Injectable, Logger } from "@nestjs/common";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
-import { PrismaService } from "@/modules/prisma/prisma.service";
+import { PrismaService } from "@/modules/common/prisma/prisma.service";
 import { PrismaError } from "@/utils/prismaError";
 
 import { CreateNoteDto } from "./dto/createNote.dto";
